@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Broken Link Checker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Broken Link Checker</h1>
+        <form id="scan-form" class="mb-4">
+            <div class="mb-3">
+                <label for="url" class="form-label">URL to Scan</label>
+                <input type="text" class="form-control" id="url" name="url" placeholder="https://example.com" required>
+            </div>
+            <div class="mb-3">
+                <label for="exclude" class="form-label">Exclude Keywords (comma-separated)</label>
+                <input type="text" class="form-control" id="exclude" name="exclude" placeholder="keyword1,keyword2">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Filter Level</label>
+                <select class="form-select" id="filter_level" name="filter_level">
+                    <option value="0">0: Clickable links</option>
+                    <option value="1" selected>1: Clickable + media, iframes, meta</option>
+                    <option value="2">2: 1 + stylesheets, scripts, forms</option>
+                    <option value="3">3: 2 + metadata</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="exclude_external" name="exclude_external">
+                    <label class="form-check-label" for="exclude_external">Exclude External Links</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="exclude_internal" name="exclude_internal">
+                    <label class="form-check-label" for="exclude_internal">Exclude Internal Links</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="follow" name="follow">
+                    <label class="form-check-label" for="follow">Follow Robot Exclusions</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="get" name="get">
+                    <label class="form-check-label" for="get">Use GET Method</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="ordered" name="ordered">
+                    <label class="form-check-label" for="ordered">Maintain Link Order</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="recursive" name="recursive">
+                    <label class="form-check-label" for="recursive">Recursive Scan</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="verbose" name="verbose">
+                    <label class="form-check-label" for="verbose">Verbose Output</label>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="requests" class="form-label">Concurrent Requests</label>
+                <input type="number" class="form-control" id="requests" name="requests" value="10" min="1">
+            </div>
+            <div class="mb-3">
+                <label for="host_requests" class="form-label">Host Concurrent Requests</label>
+                <input type="number" class="form-control" id="host_requests" name="host_requests" value="5" min="1">
+            </div>
+            <div class="mb-3">
+                <label for="user_agent" class="form-label">User Agent</label>
+                <input type="" class="form-control" id="user_agent" name="user_agent" value="Mozilla/5.0">
+            </div>
+            <button type="submit" class="btn btn-primary" id="start-btn">Start Scan</button>
+            <button type="button" class="btn btn-danger" id="stop-btn" disabled>Stop Scan</button>
+        </form>
+        <div id="results" class="border p-3" style="max-height: 400px; overflow-y: auto;">
+            <p>Results will appear here...</p>
+        </div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>

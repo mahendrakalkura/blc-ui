@@ -1,0 +1,21 @@
+body {
+    background-color: #f8f9fa;
+}
+#results {
+    background-color: #fff;
+    font-family: monospace;
+    font-size: 14px;
+}
+.result-error {
+    color: red;
+}
+.result-complete {
+    color: green;
+}
+.result-broken {
+    color: red;
+    font-weight: bold;
+}
+.result-ok {
+    color: green;
+}
