@@ -77,8 +77,4 @@ Watch this demonstration video to see the BLC in action and learn how to use all
 Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
- 
-[Add your license information here]
-
-
-
+This project is licensed under the [MIT License](LICENSE.md).
