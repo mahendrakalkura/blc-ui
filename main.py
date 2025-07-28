@@ -1,4 +1,5 @@
 import subprocess
+import os
 from flask import Flask, request, Response, send_from_directory, stream_with_context
 
 app = Flask(__name__)
@@ -6,6 +7,10 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     return send_from_directory("static", "index.html")
+
+@app.route("/static/<path:filename>")
+def static_files(filename):
+    return send_from_directory("static", filename)
 
 @app.route("/scan", methods=["POST"])
 def scan():
@@ -81,4 +86,12 @@ def call_blc(
     process.wait()
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    # Enable debug mode and auto-reload for development
+    debug_mode = os.environ.get('FLASK_DEBUG', '0') == '1'
+    app.run(
+        host="0.0.0.0", 
+        port=5000, 
+        debug=debug_mode,
+        use_reloader=debug_mode,
+        threaded=True
+    )
